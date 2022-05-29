@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><allStudents>
+    <student>
+        <id>1</id>
+        <name>Daniel Bociat</name>
+    </student>
+    <student>
+        <id>2</id>
+        <name>Sergiu Popescu</name>
+    </student>
+    <student>
+        <id>3</id>
+        <name>John Smith</name>
+    </student>
+    <student>
+        <id>4</id>
+        <name>Ion Pop</name>
+    </student>
+    <student>
+        <id>5</id>
+        <name>The Rock</name>
+    </student>
+    <student>
+        <id>6</id>
+        <name>Radu Andrei</name>
+    </student>
+<student><id>7</id><name>Andrei Andrei</name></student><student><id>8</id><name>Andrei Mircea</name></student>
+    <student><id>9</id><name>Aaron Clyde</name></student>
+
+<student><id>10</id><name>John Cena</name></student></allStudents>
