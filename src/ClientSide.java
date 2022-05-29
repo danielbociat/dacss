@@ -6,12 +6,15 @@ public class ClientSide {
     public static void main(String[] arg){
         String xmlFileName = "src/students.xml";
         StudentsXML fileXML = new StudentsXML(xmlFileName);
+
+        String SQLConn = "jdbc:jtds:sqlserver://DESKTOP:1433;domain=DEVELOPMENT;instance=MSSQLSERVER;databaseName=DACSS;";
+        StudentsSQL dbSQL = new StudentsSQL(SQLConn);
+
         HoroscopeCalc horoscope;
 
         boolean ok = true;
 
         while(ok){
-
             System.out.println("MENU");
             System.out.println("Select an option:");
             System.out.println("1. Get the horoscope for all the students in XML");
@@ -46,6 +49,11 @@ public class ClientSide {
                     System.out.println("Enter the student's name: ");
                     String sname = keyboard.nextLine();
                     fileXML.addStudent(sname);
+                    break;
+                }
+
+                case 4:{
+                    dbSQL.getAllStudents();
                     break;
                 }
 
