@@ -1,5 +1,3 @@
-import com.sun.corba.se.pept.transport.ConnectionCache;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,7 @@ public class StudentsSQL implements StudentInterface {
     @Override
     public List<Student> getAllStudents() {
         List<Student> allStudents = new ArrayList<>();
-        Connection conn = null;
+        Connection conn;
         try {
             //System.out.println(java.lang.System.getProperty("java.library.path"));
 
@@ -27,7 +25,7 @@ public class StudentsSQL implements StudentInterface {
             String query = "SELECT * FROM dacss.students";
 
             ResultSet rs = stmt.executeQuery(query);
-            //System.out.println("id\tname");
+
             while(rs.next()){
                 Student s = new Student();
                 s.setName( rs.getString("name"));
@@ -35,7 +33,6 @@ public class StudentsSQL implements StudentInterface {
 
                 allStudents.add(s);
 
-                //System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
             }
             rs.close();
         } catch (Exception e) {
@@ -48,7 +45,7 @@ public class StudentsSQL implements StudentInterface {
     @Override
     public Student getStudent(String studentName) {
         Student s = new Student();
-        Connection conn = null;
+        Connection conn;
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
 
@@ -56,7 +53,7 @@ public class StudentsSQL implements StudentInterface {
 
             Statement stmt = conn.createStatement();
 
-            studentName = new StringBuilder().append('\'').append(studentName).append('\'').toString();
+            studentName = '\'' + studentName + '\'';
 
             String query = "SELECT * FROM dacss.students WHERE name = " + studentName;
 
@@ -78,15 +75,13 @@ public class StudentsSQL implements StudentInterface {
 
     @Override
     public void addStudent(String studentName) {
-        Connection conn = null;
+        Connection conn;
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
 
             conn = DriverManager.getConnection(_conn);
 
-            Statement stmt = conn.createStatement();
-
-            studentName = new StringBuilder().append('\'').append(studentName).append('\'').toString();
+            studentName = '\'' + studentName + '\'';
 
             List<Student> allStudents = getAllStudents();
             int lastId = allStudents.get(allStudents.size() - 1).getId() + 1;
