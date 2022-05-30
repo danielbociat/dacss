@@ -7,7 +7,7 @@ public class ClientSide {
         String xmlFileName = "src/students.xml";
         StudentsXML fileXML = new StudentsXML(xmlFileName);
 
-        String SQLConn = "jdbc:jtds:sqlserver://DESKTOP:1433;domain=DEVELOPMENT;instance=MSSQLSERVER;databaseName=DACSS;";
+        String SQLConn = "jdbc:jtds:sqlserver://127.0.0.1:1433/DACSS";
         StudentsSQL dbSQL = new StudentsSQL(SQLConn);
 
         HoroscopeCalc horoscope;
@@ -53,7 +53,23 @@ public class ClientSide {
                 }
 
                 case 4:{
-                    dbSQL.getAllStudents();
+                    horoscope = new HoroscopeCalc(dbSQL);
+                    horoscope.printAllHoroscopeResult();
+                    break;
+                }
+
+                case 5:{
+                    System.out.println("Enter the student's name: ");
+                    String sname = keyboard.nextLine();
+                    horoscope = new HoroscopeCalc(dbSQL);
+                    horoscope.printHoroscopeResult(sname);
+                    break;
+                }
+
+                case 6:{
+                    System.out.println("Enter the student's name: ");
+                    String sname = keyboard.nextLine();
+                    dbSQL.addStudent(sname);
                     break;
                 }
 
