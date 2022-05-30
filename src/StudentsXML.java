@@ -108,7 +108,12 @@ public class StudentsXML implements StudentInterface{
             Element dElement = doc.getDocumentElement();
 
             List<Student> allStudents= getAllStudents();
-            int lastId = allStudents.get(allStudents.size() - 1).getId();
+
+            int lastId;
+            if(allStudents != null)
+                lastId= allStudents.get(allStudents.size() - 1).getId() + 1;
+            else
+                lastId = 1;
 
             Element textNode = doc.createElement("id");
             textNode.setTextContent(Integer.toString(lastId+1));

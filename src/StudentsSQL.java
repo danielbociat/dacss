@@ -82,7 +82,12 @@ public class StudentsSQL implements StudentInterface {
             studentName = '\'' + studentName + '\'';
 
             List<Student> allStudents = getAllStudents();
-            int lastId = allStudents.get(allStudents.size() - 1).getId() + 1;
+            int lastId;
+
+            if(allStudents != null)
+                lastId= allStudents.get(allStudents.size() - 1).getId() + 1;
+            else
+                lastId = 1;
 
             String query = "INSERT INTO dacss.students VALUES (" + lastId + ","  + studentName + ")";
 
