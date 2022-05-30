@@ -15,8 +15,6 @@ public class StudentsSQL implements StudentInterface {
         List<Student> allStudents = new ArrayList<>();
         Connection conn;
         try {
-            //System.out.println(java.lang.System.getProperty("java.library.path"));
-
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
 
             conn = DriverManager.getConnection(_conn);

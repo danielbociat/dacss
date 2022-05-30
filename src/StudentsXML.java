@@ -27,7 +27,6 @@ public class StudentsXML implements StudentInterface{
             File xmlFile = new File(this._file);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 
-
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
 
